@@ -1,11 +1,15 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { ConfigModule } from '@nestjs/config';
 import { CaronaModule } from './carona/carona.module';
 
 @Module({
-  imports: [CaronaModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    CaronaModule,
+  ],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
